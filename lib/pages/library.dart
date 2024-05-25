@@ -19,18 +19,36 @@ class _LibraryState extends State<Library> {
     "assets/general/podcast/p4.jpeg",
     'assets/general/illu.jpeg',
     'assets/general/matha.jpeg',
+    'assets/general/liked.png',
+    "assets/general/artist/tom odell.jpeg",
+    "assets/general/artist/ar.jpeg",
+    "assets/general/podcast/p4.jpeg",
+    'assets/general/illu.jpeg',
+    'assets/general/matha.jpeg',
   ];
 
   List names = [
     "Liked Songs",
     "Tom Odell",
-    "Ariana",
+    "AR Rahman",
+    "Somethig",
+    "Illuminaty",
+    "Matahpithakale",
+    "Liked Songs",
+    "Tom Odell",
+    "AR Rahman",
     "Somethig",
     "Illuminaty",
     "Matahpithakale"
   ];
 
   List gerner = [
+    "Playlist.58 Songs",
+    "Artist",
+    "Artist",
+    "Podcast",
+    "Song",
+    "Song",
     "Playlist.58 Songs",
     "Artist",
     "Artist",
@@ -44,6 +62,7 @@ class _LibraryState extends State<Library> {
     return Scaffold(
       backgroundColor: bg2,
       body: ListView(
+        primary: true,
         children: [
           const SizedBox(
             height: 26,
@@ -118,29 +137,37 @@ class _LibraryState extends State<Library> {
                   icon: isGrid ? Icon(Icons.list) : Icon(Icons.grid_3x3))
             ],
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: isGrid
-                ? GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        mainAxisExtent: 170,
-                        crossAxisSpacing: 12),
-                    itemBuilder: (context, index) => LibraryCard(
-                      gerner: gerner[index],
-                      img: img[index],
-                      name: names[index],
-                    ),
-                    itemCount: names.length,
-                  )
-                : ListView.builder(
-                    itemBuilder: (context, index) => SearchItems(
-                        name: names[index],
+          ScrollConfiguration(
+            behavior: ScrollBehavior().copyWith(
+              overscroll: false,
+              // physics: NeverScrollableScrollPhysics(),
+            ),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: isGrid
+                  ? GridView.builder(
+                      primary: false,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          mainAxisExtent: 170,
+                          crossAxisSpacing: 12),
+                      itemBuilder: (context, index) => LibraryCard(
                         gerner: gerner[index],
-                        imgName: img[index]),
-                    itemCount: 6,
-                  ),
+                        img: img[index],
+                        name: names[index],
+                      ),
+                      itemCount: names.length,
+                    )
+                  : ListView.builder(
+                      primary: false,
+                      itemBuilder: (context, index) => SearchItems(
+                          name: names[index],
+                          gerner: gerner[index],
+                          imgName: img[index]),
+                      itemCount: 10,
+                    ),
+            ),
           )
         ],
       ),

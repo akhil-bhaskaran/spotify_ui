@@ -14,6 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(fontFamily: 'popins'),
         debugShowCheckedModeBanner: false,
-        home: const StartingPage());
+        home: const Navigating());
   }
 }
