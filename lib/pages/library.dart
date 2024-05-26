@@ -134,11 +134,13 @@ class _LibraryState extends State<Library> {
                       isGrid = !isGrid;
                     });
                   },
-                  icon: isGrid ? Icon(Icons.list) : Icon(Icons.grid_3x3))
+                  icon: isGrid
+                      ? const Icon(Icons.list)
+                      : const Icon(Icons.grid_3x3))
             ],
           ),
           ScrollConfiguration(
-            behavior: ScrollBehavior().copyWith(
+            behavior: const ScrollBehavior().copyWith(
               overscroll: false,
               // physics: NeverScrollableScrollPhysics(),
             ),
@@ -148,10 +150,11 @@ class _LibraryState extends State<Library> {
               child: isGrid
                   ? GridView.builder(
                       primary: false,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisExtent: 170,
-                          crossAxisSpacing: 12),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisExtent: 170,
+                              crossAxisSpacing: 12),
                       itemBuilder: (context, index) => LibraryCard(
                         gerner: gerner[index],
                         img: img[index],

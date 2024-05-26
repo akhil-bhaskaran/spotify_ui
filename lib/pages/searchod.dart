@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:spotify/components/colors.dart';
 import 'package:spotify/components/search_items.dart';
+import 'package:spotify/pages/songs.dart';
 
 class SearchOG extends StatefulWidget {
   const SearchOG({super.key});
@@ -45,6 +46,8 @@ class _SearchOGState extends State<SearchOG> {
 
   @override
   Widget build(BuildContext context) {
+    bool isPlaying = false;
+
     return Scaffold(
       backgroundColor: bg2,
       body: Padding(
@@ -57,7 +60,7 @@ class _SearchOGState extends State<SearchOG> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width / 1.3,
                   height: 40,
                   child: TextField(
@@ -70,14 +73,14 @@ class _SearchOGState extends State<SearchOG> {
                         ),
                         labelText: 'Search',
                         labelStyle: t2,
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(19)),
                             borderSide: BorderSide.none)),
                   ),
                 ),
-                Container(
+                SizedBox(
                     height: 40,
-                    width: MediaQuery.of(context).size.width / 5.5,
+                    width: MediaQuery.of(context).size.width / 5.1,
                     child: TextButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -97,15 +100,34 @@ class _SearchOGState extends State<SearchOG> {
             //   width: MediaQuery.of(context).size.width,
             //   height: MediaQuery.of(context).size.height,
             // )
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
                 itemCount: gnr.length,
-                itemBuilder: (context, index) => SearchItems(
-                  name: songName[index],
-                  gerner: gnr[index],
-                  imgName: profilepics[index],
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Songs(
+                            callBack: (value) {
+                              setState(() {
+                                isPlaying = value;
+                              });
+                            },
+                            isPlayingg: isPlaying,
+                            imgName: profilepics[index],
+                            songName: songName[index],
+                            artistName: null,
+                          ),
+                        ));
+                  },
+                  child: SearchItems(
+                    name: songName[index],
+                    gerner: gnr[index],
+                    imgName: profilepics[index],
+                  ),
                 ),
               ),
             )
