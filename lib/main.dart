@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spotify/pages/home_page.dart';
-import 'package:spotify/pages/navigating.dart';
-import 'package:spotify/pages/starting_page.dart';
+import 'package:spotify/pages/create_acc_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +12,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(fontFamily: 'popins'),
         debugShowCheckedModeBanner: false,
-        home: const Navigating());
+        home: const CreateAccPage());
   }
 }

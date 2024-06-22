@@ -4,8 +4,6 @@ import 'package:spotify/components/cardz.dart';
 
 import 'package:spotify/components/colors.dart';
 import 'package:spotify/components/song_playing.dart';
-import 'package:spotify/pages/library.dart';
-import 'package:spotify/pages/search.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
