@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/components/colors.dart';
 
-class LibraryCard extends StatelessWidget {
+class LibraryCard extends StatefulWidget {
   const LibraryCard(
       {super.key, required this.img, required this.gerner, required this.name});
   final String img;
   final String gerner;
   final String name;
+
+  @override
+  State<LibraryCard> createState() => _LibraryCardState();
+}
+
+class _LibraryCardState extends State<LibraryCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,16 +27,16 @@ class LibraryCard extends StatelessWidget {
               height: 100,
               width: 100,
               child: Image.asset(
-                img,
+                widget.img,
                 fit: BoxFit.cover,
               ),
             ),
             Text(
-              name,
+              widget.name,
               style: t11,
             ),
             Text(
-              gerner,
+              widget.gerner,
               style: t3,
             )
           ],
