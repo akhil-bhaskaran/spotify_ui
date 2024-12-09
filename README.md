@@ -1,4 +1,4 @@
-# SPOTIIFY UI
+# SPOTIFY UI
 
 Complete UI of Spotify using Flutter
 
